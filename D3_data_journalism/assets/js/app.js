@@ -135,9 +135,27 @@ d3.csv("assets/data/data.csv").then(function(healthData, err) {
         .append("circle")
         .attr("cx", d => xLinearScale(d[chosenXAxis]))
         .attr("cy", d => yLinearScale(d.obesity))
-        .attr("r", 5)
+        .attr("r", 10)
         .attr("fill", "blue")
         .attr("opacity", ".5");
+
+
+    var circlesText = chartGroup.selectAll("stateText")
+        .data(healthData)
+        .enter()
+        .append("text")
+        .text(function(d) {
+            return d.abbr
+        })
+        .attr("x", function(d) {
+            return xLinearScale(d[chosenXAxis]);
+        })
+        .attr("y", function(d) {
+            return yLinearScale(d.obesity);
+        })
+        .attr("font-size", "10px")
+        .attr("text-anchor", "middle")
+        .attr("fill", "black");
 
     // Create group for  2 x- axis labels
     var labelsGroup = chartGroup.append("g")
