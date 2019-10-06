@@ -78,7 +78,7 @@ function updateToolTip(chosenXAxis, circlesGroup) {
         .attr("class", "d3-tip")
         .offset([20, 20])
         .html(function(d) {
-            return (`${d.state}<br>${d.obesity} ${d[chosenXAxis]}`);
+            return (`${d.state}<br> Obesity: ${d.obesity} ${d[chosenXAxis]}`);
         });
 
     circlesGroup.call(toolTip);
